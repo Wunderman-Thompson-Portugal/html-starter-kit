@@ -3,3 +3,4 @@ public/build
 yarn.lock
 dist
 .cache
+.DS_Store
