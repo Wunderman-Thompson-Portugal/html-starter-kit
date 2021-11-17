@@ -25,10 +25,10 @@
 
    ```bash
    # Using npm
-   npm run serve
+   npm run dev
 
    # Using Yarn
-   yarn serve
+   yarn dev
    ```
 
    Now you should be able to see the project running at localhost:8080.
