@@ -39,3 +39,19 @@
  We recomend to develop using [Visual Studio Code](https://code.visualstudio.com/) for IDE software, and on top on that we have some plugins that recomend to install to help your performance during the development phase
  - [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss): Enhances the Tailwind development experience by providing Visual Studio Code users with advanced features such as autocomplete, syntax highlighting, and linting.
  - [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode): Prettier is an opinionated code formatter. It enforces a consistent style by parsing your code and re-printing it with its own rules that take the maximum line length into account, wrapping code when necessary.
+
+ ## Building for production
+
+Even though this isn't necessarily a starter kit for a proper project, we've included an example of setting up [cssnano](https://cssnano.co/) to optimize your CSS for production.
+
+To build an optimized version of your CSS, simply run:
+
+```bash
+# Using npm
+npm run production
+
+# Using Yarn
+yarn production
+```
+
+After that's done, check out `./public/build/tailwind.css` to see the optimized output.
