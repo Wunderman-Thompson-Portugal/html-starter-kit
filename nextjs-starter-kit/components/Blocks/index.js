@@ -1,5 +1,10 @@
 import { sectionConfig } from '@/lib/section-config'
 
+/**
+ * This component create dynamic components based on __typename
+ * @param {Object} param0 
+ * @returns Component
+ */
 export default function Blocks({ sections, relations }) {
 
     if (!sections) return <></>
@@ -24,10 +29,7 @@ export default function Blocks({ sections, relations }) {
         if (Component.rowWrap) {
             block = <div key={index} className="row">{block}</div>
         }
-
-        //let header = Component.header !== false ? <Header slice={slice}></Header> : <></>
-        //let illustrations = slice.primary && slice.primary.illustrations ? <Illustrations slice={slice}></Illustrations> : <></>
-
+        
         return Component.wrap ? (
             <section key={index} className="o-section" data-slice={slice.__typename}>
                 {block}
