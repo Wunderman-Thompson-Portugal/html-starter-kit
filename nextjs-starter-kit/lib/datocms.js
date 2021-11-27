@@ -2,7 +2,7 @@ import tiny from 'tiny-json-http';
 
 export async function request({ query, variables, preview }) {
 
-  let endpoint = 'https://graphql.datocms.com';
+  let endpoint = process.env.DATOCMS_API_URL;
 
   if (process.env.DATOCMS_ENVIRONMENT) {
     endpoint += `/environments/${process.env.DATOCMS_ENVIRONMENT}`;

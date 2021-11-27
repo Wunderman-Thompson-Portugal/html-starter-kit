@@ -74,7 +74,7 @@ export function createPagePaths(records, context) {
     records.map(item => {
 
         if (item._allSlugLocales) {
-            let def = item._allSlugLocales.find(item => item.locale === 'en')
+            let def = item._allSlugLocales.find(item => item.locale === process.env.DEFAULT_SITE_LOCALE )
             item._allSlugLocales.map(slug => {
                 if (context.locales.indexOf(slug.locale) === -1) return
                 let value = slug.value ? slug.value : def.value
