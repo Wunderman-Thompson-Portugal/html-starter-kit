@@ -6,7 +6,7 @@
 import dynamic from "next/dynamic";
 
 export const sectionConfig = {
-    HeroImageRecord: {
+    SectionHeroImageRecord: {
         repeatable: false,
         component: dynamic(() => import("@/components/Organisms/Hero/HeroImage")),
     },

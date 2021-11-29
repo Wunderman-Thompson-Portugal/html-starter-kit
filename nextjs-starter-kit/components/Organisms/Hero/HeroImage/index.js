@@ -1,5 +1,18 @@
-export default function HeroImage({ children }) {
-    return (
-        <>Hero Image</>
-    )
+export default function HeroImage(data) {
+    console.log(data)
+  return (
+
+    <>
+    {data.title}
+    </>
+  );
 }
+
+export const fragment = `
+    fragment HeroImageFragment on SectionHeroImageRecord{
+        __typename
+        id
+        title
+        description
+    }
+`;

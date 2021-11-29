@@ -1,29 +1,44 @@
+import { getHomePage } from "@/dato-api/home";
+
 import { metaTagsFragment, responsiveImageFragment } from "../lib/fragments";
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import dynamic from "next/dynamic";
+const Hero = dynamic(() => import("@/components/Organisms/Hero"));
 import { useTranslation } from "next-i18next";
 import { pageHandler } from "@/lib/pages-handler";
 
-export default function Index() {
+/**
+ *
+ * @param {array} data Homepage data
+ * @returns JSX Element
+ *
+ */
 
+export default function Index({ data }) {
   const { t } = useTranslation();
 
   return (
     <>
-      Index
-      <div>{t('testTranslation')}</div>
+      <Hero data={data.heroBanner} />
+      <div>{t("testTranslation")}</div>
     </>
   );
-
 }
 
 export async function getStaticProps(context) {
-  
-  const pageData = await pageHandler(context, serverSideTranslations);
+  const result = await getHomePage(context.locale, context.preview);
+  const pageData = await pageHandler(
+    context,
+    serverSideTranslations,
+    result,
+    "campaingPage"
+  );
 
   return {
     props: {
       ...pageData.sst,
-      preview: pageData.preview
+      data: { ...pageData.data },
+      preview: pageData.preview,
     },
-  }
+  };
 }
