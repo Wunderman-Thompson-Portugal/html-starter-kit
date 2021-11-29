@@ -1,5 +1,5 @@
-import { getHomePage } from "@/dato-api/home";
-
+import { GetCampaignPage, getAllCampaignPages } from "@/dato-api/campaign-pages";
+import { createPagePaths, fetchComponentRelations } from "@/lib/api";
 import { metaTagsFragment, responsiveImageFragment } from "../lib/fragments";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import dynamic from "next/dynamic";
@@ -26,7 +26,7 @@ export default function Index({ data }) {
 }
 
 export async function getStaticProps(context) {
-  const result = await getHomePage(context.locale, context.preview);
+  const result = await GetCampaignPage(context.locale, context.preview);
   const pageData = await pageHandler(
     context,
     serverSideTranslations,
@@ -42,3 +42,13 @@ export async function getStaticProps(context) {
     },
   };
 }
+
+export async function getStaticPaths(context) {
+    const records = await getAllCampaignPages();
+    let paths = createPagePaths(records, context);
+  
+    return {
+      paths: paths || [],
+      fallback: false,
+    };
+  }

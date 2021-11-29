@@ -25,6 +25,7 @@ export async function fetchAPI(query, { variables, preview, apiToken } = {}) {
 
     const json = await res.json()
     if (json.errors) {
+        console.log(json.errors)
         console.error(json.errors)
         throw new Error('Failed to fetch API')
     }
